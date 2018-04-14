@@ -1,31 +1,6 @@
 `timescale 1ps/1ps
-`include "top.v"
-/*
-module testbench();
-
-  reg [31:0] a,b;
-  reg [2:0] aluc;
-  wire z;
-  wire [31:0] r, r2;
-  reg clk;
-  
-  always #5 clk=~clk;
-  
-  initial begin
-    #0 a<=32'H00000011;
-    #0 b<=32'H00000001;
-    #0 aluc<=3'b110;   
-    
-  end
-  
-  alu myalu(a,b,aluc,r,z);
-  
-  assign r2 = a&b;
-  
-  
-
-endmodule
-*/
+//`include "top.v"
+`include"pipelinetop.v"
 
 module _testbench();
   reg clk;
@@ -33,7 +8,8 @@ module _testbench();
   wire [31:0] writedata, dataadr;
   wire memwrite;
 // instantiate device to be tested
-  top dut (clk, reset, writedata, dataadr, memwrite);
+  //top dut (clk, reset, writedata, dataadr, memwrite);
+  pipelinetop pipelinetop(clk, reset);
 // initialize test
   initial 
     begin
@@ -44,7 +20,7 @@ module _testbench();
     begin
       clk <= 1; # 5; clk <= 0; # 5;
     end
-    
+    /*
     // check results 
     always @ (negedge clk)
       begin
@@ -58,7 +34,7 @@ module _testbench();
           end
         end
       end
-      
+    */
 endmodule
     
     

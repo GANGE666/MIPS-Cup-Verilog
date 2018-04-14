@@ -1,5 +1,12 @@
 `include"datapath.v"
 `include"controller.v"
+`include"pipeline.v"
+
+
+
+
+
+
 
 module mips(input         clk, reset,
             output [31:0] pc,
