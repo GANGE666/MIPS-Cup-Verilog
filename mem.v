@@ -17,7 +17,9 @@ module imem (input [5:0] a, output [31:0] rd);
       //$readmemh ("jaltest.dat", RAM);
 	  //$readmemh("sltaddsubtest.dat", RAM);
 	  //$readmemh("mipstest_ext.dat", RAM);
-	  $readmemh("Test_Single_Pipelined.dat", RAM);
+	  //$readmemh("Test_Single_Pipelined.dat", RAM);
+	  $readmemh("mipstest_pipelined.dat", RAM);
+	  //$readmemh("temp.dat",RAM);
     end
   assign rd = RAM[a]; // word aligned 
 endmodule

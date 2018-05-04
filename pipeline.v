@@ -94,7 +94,8 @@ module ID(	input			clk,
 			output	[31:0]	da, db, dimm,
 			output	[4:0]	drn);
 	
-	wire	signextsignal, regrt;
+	wire	[1:0]	signextsignal;
+	wire	regrt;
 	wire	rsrtequ;
 	wire 	[1:0]	fwda, fwdb;
 	wire	[31:0]	rd1, rd2;
@@ -212,7 +213,8 @@ module EXE(	input	[31:0]	ea, eb, eimm,
 	alu         alu(srca, srcb, alucontrol, aluout, zero);
 	
 	//alu mux
-	mux2 #(32)	elaumux(aluout, epc4 + 4, ejal, ealu);
+	//mux2 #(32)	elaumux(aluout, epc4 + 4, ejal, ealu);
+	mux2 #(32)	elaumux(aluout, epc4, ejal, ealu);
 	
 	assign ern = ejal ? 5'b11111 : ern0;
 
